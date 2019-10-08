@@ -3,18 +3,23 @@ import Button from '@material-ui/core/Button';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
 
 import styles from './Counter.module.css';
+import {ButtonContext} from '../App/App';
 
-const Counter = ({ count, onCountDown, onCountUp, resetAll }) => {
+const Counter = ({ count }) => {
   return(
     <div className={styles.count_wrap}>
       <span className={styles.count}>
         { count }
       </span>
-      <ButtonGroup variant="contained" size="small" aria-label="small contained button group">
-        <Button onClick={onCountDown}>-</Button>
-        <Button onClick={resetAll}>R</Button>
-        <Button onClick={onCountUp}>+</Button>
-      </ButtonGroup>
+        <ButtonContext.Consumer>
+          {({ onCountDown, resetAll, onCountUp }) => (
+            <ButtonGroup variant="contained" size="small" aria-label="small contained button group">
+              <Button onClick={onCountDown}>-</Button>
+              <Button onClick={resetAll}>R</Button>
+              <Button onClick={onCountUp}>+</Button>
+            </ButtonGroup>
+          )}
+        </ButtonContext.Consumer>
     </div>
   );
 };
