@@ -2,7 +2,11 @@ import React from 'react';
 import Button from '@material-ui/core/Button';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
 
+import { Provider, connect } from 'react-redux';
+
+
 import styles from './Counter.module.css';
+import store from '../store/store';
 
 const Counter = ({ count, onCountDown, onCountUp, resetAll }) => {
   return(
